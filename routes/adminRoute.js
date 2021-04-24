@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const multer = require('multer');
-const fs = require('fs');
 const adminController = require('../app/api/controllers/adminController');
 
 const fileStorage = multer.diskStorage({
@@ -10,7 +9,7 @@ const fileStorage = multer.diskStorage({
     },
     filename: function (req, file, cb) {
         cb(null, Date.now() + file.originalname);
-    }
+    },
 });
 const fileFilter = (req, file, cb) => {
     // ACCEPT OR REJECT A FILE
@@ -26,11 +25,11 @@ const fileFilter = (req, file, cb) => {
 const upload = multer({
     storage: fileStorage,
     limits: {
-        fileSize: 1024 * 1024 * 1024 * 1
+        fileSize: 1024 * 1024 * 1024 * 1,
     },
-    fileFilter: fileFilter
+    fileFilter: fileFilter,
 });
 
-router.post('/addAdmin',upload.single('file'), adminController.addAdmin);
+router.post('/addAdmin', upload.single('file'), adminController.addAdmin);
 router.post('/loginAdmin', adminController.loginAdmin);
 module.exports = router;
