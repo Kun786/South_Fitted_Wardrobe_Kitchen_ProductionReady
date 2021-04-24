@@ -33,6 +33,8 @@ RUN chown -R 1000:1000 /usr/src/app
 # Run the service with a non-root user
 USER 1000:1000
 
+ENV NODE_ENV = "production"
+
 EXPOSE 3000
 
 # Command to execute at the end, each parameters in an element in the array

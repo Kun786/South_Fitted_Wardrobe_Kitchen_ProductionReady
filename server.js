@@ -30,5 +30,5 @@ app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname + '/frontend/index.html'));
 });
 app.listen(port, function (err, res) {
-    console.log(`Port ${port} Running Successfully!`);
+    console.log(`Port ${port} Running Successfully in ${process.env.NODE_ENV} mode!`);
 });
