@@ -44,7 +44,7 @@ jobs:
 
     # Push the image to the registry
       - name: Push Image
-        run: docker push $IMAGE_NAME
+        run: docker push ghcr.io/fazi1/south_fitted_wardrobe:354176 
     
 
 # # Continuous deployment 
