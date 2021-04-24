@@ -45,4 +45,4 @@ jobs:
 
     # Push the image to the registry
       - name: Push Image
-        run: docker push ghcr.io/$USER_NAME/south_fitted_wardrobe:latest
+        run: docker push ghcr.io/fazi1live/south_fitted_wardrobe:latest
