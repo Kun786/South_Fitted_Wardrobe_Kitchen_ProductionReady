@@ -1,0 +1,36 @@
+require('./credentials/env');
+const express = require('express');
+const app = express();
+const fs = require('fs');
+const morgan = require('morgan');
+const bodyParser = require('body-parser');
+const cors = require('cors');
+const db = require('./config/db');
+const path = require('path');
+const port=process.env.PORT || 7000;
+
+app.use(bodyParser.json());
+app.use(cors());
+app.use(morgan('dev'));
+
+
+
+app.use('/RecentWorkImages',express.static('RecentWorkImages'));
+app.use('/HeaderImages',express.static('HeaderImages'));
+app.use('/RecentWorkMultipleImages',express.static('RecentWorkMultipleImages'));
+
+const adminRoutes = require('./routes/adminRoute');
+const otherRoutes = require('./routes/otherRoutes');
+const workRoutes = require('./routes/mediaRoutes');
+
+app.use('/admin', adminRoutes);
+app.use('/other', otherRoutes);
+app.use('/work', workRoutes);
+
+app.use(express.static(path.join(__dirname,'/frontend')));
+app.get('*',(req,res)=>{
+    res.sendFile(path.join(__dirname+'/frontend/index.html'));
+})
+app.listen(port, function(err, res){
+    console.log(`Port ${port} Running Successfully!`);
+})
