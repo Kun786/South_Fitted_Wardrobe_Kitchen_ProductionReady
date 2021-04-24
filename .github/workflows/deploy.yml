@@ -33,9 +33,6 @@ jobs:
   #   # Build the image 
   #     - name: Build Image
   #       run: |
-  #         VERSION=$(echo "${GITHUB_SHA:0:6}")
-  #         echo $VERSION
-  #         REPO_LOWER=$(echo $REPOSITORY | tr '[A-Z]' '[a-z]')
   #         IMAGE_NAME=ghcr.io/fazi1live/south_fitted_wardrobe:latest
   #         docker build -t $IMAGE_NAME . && docker images
 
@@ -72,6 +69,4 @@ jobs:
     # Deployment
       - name: Deployment
         run: |
-          echo "docker pull ghcr.io/fazi1live/south_fitted_wardrobe:latest" | ssh $SERVER_USER_NAME@$SERVER_IP
-          echo "docker stop main" | ssh $SERVER_USER_NAME@$SERVER_IP
-          echo "docker run -p 3000:3000 --name main -d ghcr.io/fazi1live/south_fitted_wardrobe:latest"
+          echo "docker pull ghcr.io/fazi1live/south_fitted_wardrobe:latest && docker stop main && docker run -p 3000:3000 --name main -d ghcr.io/fazi1live/south_fitted_wardrobe:latest" | ssh $SERVER_USER_NAME@$SERVER_IP
