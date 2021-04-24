@@ -35,7 +35,7 @@ jobs:
         run: |
           VERSION=$(echo "${GITHUB_SHA:0:6}")
           REPO_LOWER=$(echo $REPOSITORY | tr '[A-Z]' '[a-z]')
-          IMAGE_NAME=ghcr.io/$USER_NAME/south_fitted_wardrobe:latest
+          IMAGE_NAME=ghcr.io/$USER_NAME/south_fitted_wardrobe:$VERSION
           docker build -t $IMAGE_NAME . && docker images
 
     # Login to GitHub's container registry
@@ -44,7 +44,7 @@ jobs:
 
     # Push the image to the registry
       - name: Push Image
-        run: docker push ghcr.io/$USER_NAME/south_fitted_wardrobe:latest
+        run: docker push ghcr.io/$USER_NAME/south_fitted_wardrobe:$VERSION
     
 
 # # Continuous deployment 
