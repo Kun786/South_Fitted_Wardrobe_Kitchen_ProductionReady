@@ -3,7 +3,7 @@ const express = require('express');
 const app = express();
 const morgan = require('morgan');
 const cors = require('cors');
-
+require('./config/db');
 const path = require('path');
 const port = process.env.PORT || 7000;
 
@@ -28,7 +28,7 @@ app.use('/work', workRoutes);
 app.use(express.static(path.join(__dirname, '/frontend')));
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname + '/frontend/index.html'));
-})
+});
 app.listen(port, function (err, res) {
     console.log(`Port ${port} Running Successfully!`);
-})
+});
