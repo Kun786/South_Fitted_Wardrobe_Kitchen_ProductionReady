@@ -48,7 +48,7 @@ jobs:
   #       run: docker push ghcr.io/fazi1live/south_fitted_wardrobe:latest
 
   CD:
-    needs: CI
+    # needs: CI
     runs-on: ubuntu-latest
     permissions:
       packages: write
