@@ -68,4 +68,4 @@ jobs:
     # Deployment
       - name: Deployment
         run: |
-          echo "docker stop main && docker pull ghcr.io/fazi1live/south_fitted_wardrobe:latest && yes | docker system prune && docker run -p 3000:3000 --name main -d ghcr.io/fazi1live/south_fitted_wardrobe:latest" | ssh $SERVER_USER_NAME@$SERVER_IP
+          echo "docker stop main && docker pull ghcr.io/fazi1live/south_fitted_wardrobe:latest && yes | docker system prune && docker run -p 3000:3000 --name main -v headerImage:/src/usr/app/HeaderImages -v RecentWorkImages:/src/usr/app/RecentWorkImages -v RecentWorkMultipleImages:/src/usr/app/RecentWorkMultipleImages -d ghcr.io/fazi1live/south_fitted_wardrobe:latest" | ssh $SERVER_USER_NAME@$SERVER_IP
