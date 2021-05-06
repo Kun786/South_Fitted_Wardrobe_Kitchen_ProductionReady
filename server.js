@@ -1,3 +1,4 @@
+// Dependencies
 require('./credentials/env');
 const express = require('express');
 const app = express();
