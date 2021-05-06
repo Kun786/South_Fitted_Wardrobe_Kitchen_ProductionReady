@@ -13,7 +13,7 @@ app.use(cors());
 app.use(morgan('dev'));
 
 
-//new testing commit
+//new testing commit fazi
 app.use('/RecentWorkImages', express.static('RecentWorkImages'));
 app.use('/HeaderImages', express.static('HeaderImages'));
 app.use('/RecentWorkMultipleImages', express.static('RecentWorkMultipleImages'));
